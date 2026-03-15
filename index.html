@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الفقه المالكي — ملخص المسائل</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#000000;
+  --page:#ffffff;
+  --page2:#f8f8f8;
+  --gold:#8a6820;
+  --gold-light:#b8922a;
+  --gold-pale:#f5e8c0;
+  --green:#1a3828;
+  --green2:#2c5040;
+  --rust:#7a2a10;
+  --border:#cccccc;
+  --shadow:rgba(0,0,0,.12);
+  --drawer-w:460px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Scheherazade New',serif;
+  background:#ffffff;
+  color:#000000;
+  min-height:100vh;
+}
+
+/* ── HEADER ── */
+header{background:var(--green);position:sticky;top:0;z-index:90;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+.header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px 22px;gap:12px}
+.site-title{font-family:'Amiri',serif;color:#f5e8c0;font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.site-title span{color:#c8a84a;font-size:1.45rem}
+.header-tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#searchInput{background:rgba(255,255,255,.12);border:1px solid rgba(200,168,74,.4);border-radius:18px;padding:6px 14px;color:#f5e8c0;font-family:'Scheherazade New',serif;font-size:.88rem;width:160px;outline:none;transition:all .2s}
+#searchInput::placeholder{color:rgba(245,232,192,.5)}
+#searchInput:focus{background:rgba(255,255,255,.18);border-color:#c8a84a;width:200px}
+.hbtn{border:none;border-radius:18px;padding:6px 14px;font-family:'Scheherazade New',serif;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap}
+#printBtn{background:#f0ead8;color:var(--green);border:1px solid #ccc}
+#printBtn:hover{background:#fff}
+#loginBtn{background:#8a6820;color:#fff}
+#loginBtn:hover{background:#b8922a}
+#logoutBtn{display:none;background:transparent;color:#f0c880;border:1px solid #f0c880}
+.admin-tag{display:none;background:#7a2a10;color:#ffd;font-size:.7rem;padding:3px 9px;border-radius:10px;white-space:nowrap}
+.menu-toggle{display:none;background:none;border:none;color:#f5e8c0;font-size:1.3rem;cursor:pointer;padding:4px 8px}
+
+/* ── LAYOUT ── */
+.app-wrap{display:flex;max-width:1200px;margin:0 auto;min-height:calc(100vh - 58px)}
+
+/* ── TOC ── */
+.toc-sidebar{width:240px;min-width:240px;background:var(--green);color:#f5e8c0;padding:16px 0;position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;flex-shrink:0}
+.toc-head{padding:0 14px 12px;border-bottom:1px solid rgba(200,168,74,.25);margin-bottom:8px;font-family:'Amiri',serif;font-size:.98rem;color:#c8a84a}
+.toc-book-btn{width:100%;background:none;border:none;color:#f5e8c0;font-family:'Scheherazade New',serif;font-size:.88rem;font-weight:600;padding:7px 14px;text-align:right;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .15s}
+.toc-book-btn:hover,.toc-book-btn.open{background:rgba(200,168,74,.14)}
+.toc-chap-list{display:none;padding-right:6px}
+.toc-chap-list.open{display:block}
+.toc-chap-btn{width:100%;background:none;border:none;color:#a8c8b0;font-family:'Scheherazade New',serif;font-size:.8rem;padding:5px 14px 5px 8px;text-align:right;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .15s}
+.toc-chap-btn:hover{color:#f5e8c0;background:rgba(255,255,255,.05)}
+.toc-masail-list{display:none;padding-right:10px}
+.toc-masail-list.open{display:block}
+.toc-masala-btn{display:block;width:100%;background:none;border:none;color:#78a888;font-family:'Scheherazade New',serif;font-size:.74rem;padding:4px 14px 4px 8px;text-align:right;cursor:pointer;border-right:2px solid transparent;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.toc-masala-btn:hover{color:#f5e8c0;border-right-color:#c8a84a}
+.arrow{font-size:.58rem;opacity:.6;transition:transform .22s;margin-right:4px}
+.toc-book-btn.open .arrow,.toc-chap-btn.open .arrow{transform:rotate(90deg)}
+
+/* ── BOOK BODY ── */
+.book-body{flex:1;max-width:780px;padding:36px 52px 80px;background:#ffffff;position:relative}
+
+/* margin rule */
+.book-body::before{content:'';position:absolute;top:0;bottom:0;right:42px;width:1px;background:linear-gradient(to bottom,transparent,#e0e0e0 5%,#e0e0e0 95%,transparent);pointer-events:none}
+
+.basmalah{text-align:center;font-family:'Amiri',serif;font-size:1.8rem;color:var(--gold);margin-bottom:28px;opacity:.7}
+
+/* ── BOOK SECTION ── */
+.book-section{margin-bottom:52px}
+.book-title-block{text-align:center;margin-bottom:26px}
+.book-ornament{color:var(--gold);font-size:1rem;letter-spacing:8px;opacity:.45;margin-bottom:3px}
+.book-title{font-family:'Amiri',serif;font-size:1.65rem;font-weight:700;color:#000000;display:inline-block;padding:4px 26px;border-top:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold)}
+
+/* ── CHAPTER ── */
+.chapter-section{margin-bottom:30px}
+.chapter-title{font-family:'Amiri',serif;font-size:1.18rem;font-weight:700;color:#000000;margin-bottom:16px;padding-right:12px;border-right:3px solid #888888}
+
+/* ── PROSE ── */
+.masail-prose{font-size:1.1rem;line-height:2.2;color:#000000;text-align:justify;text-justify:inter-word}
+
+/* ── MASALA INLINE ── */
+.masala{display:inline;position:relative}
+.masala-text{display:inline;cursor:default;border-bottom:1.5px dashed transparent;transition:border-color .15s,background .15s;padding-bottom:1px}
+.masala.has-dalil .masala-text{border-bottom-color:#8a6820;cursor:pointer}
+.masala.has-dalil .masala-text:hover{background:#fef9ec;border-bottom-style:solid}
+.masala.active .masala-text{background:#fef3d0;border-bottom-style:solid;border-bottom-color:#b8922a}
+.fn-ref{display:inline-block;font-size:.58em;vertical-align:super;color:#8a6820;font-weight:700;margin-right:1px;line-height:1;cursor:pointer;transition:color .15s}
+.fn-ref:hover{color:#7a2a10}
+
+/* ruling badge */
+.ruling-badge{display:inline-block;font-size:.6em;vertical-align:middle;padding:1px 7px;border-radius:8px;margin-right:3px;font-weight:700;border:1px solid currentColor;opacity:.85}
+.r-wajib{color:#7a0000;background:#fff0f0}
+.r-mandub{color:#004a20;background:#f0fff4}
+.r-mubah{color:#001a60;background:#f0f4ff}
+.r-makruh{color:#5a2800;background:#fff8f0}
+.r-haram{color:#600000;background:#fff0f0}
+.r-sahih{color:#004a20;background:#f0fff4}
+.r-fasid{color:#5a2800;background:#fff8f0}
+.r-batil{color:#600000;background:#fff0f0}
+
+/* edit btn */
+.edit-masala-btn{display:none;background:none;border:none;cursor:pointer;color:#aaa;font-size:.7rem;vertical-align:middle;margin-right:2px;transition:color .15s;padding:0 2px}
+.edit-masala-btn:hover{color:var(--gold)}
+body.is-admin .edit-masala-btn{display:inline}
+
+/* add zone */
+.add-masala-zone{display:none;margin-top:10px}
+body.is-admin .add-masala-zone{display:block}
+.add-masala-btn{background:none;border:1px dashed #aaa;color:#888;border-radius:14px;padding:4px 14px;font-family:'Scheherazade New',serif;font-size:.8rem;cursor:pointer;transition:all .15s}
+.add-masala-btn:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── NOTE BOX ── */
+.note-box{background:#f9f9f9;border:1px solid #ddd;border-right:3px solid #888;border-radius:6px;padding:12px 16px;margin:12px 0;font-size:.88rem;line-height:1.9;color:#111}
+.note-box.gold-note{border-right-color:var(--gold);background:#fffbf2}
+.note-box strong{color:#000;display:block;margin-bottom:4px;font-size:.92rem}
+
+/* ── IMAGE IN PROSE ── */
+.prose-img{display:block;max-width:100%;margin:16px auto;border:1px solid #ddd;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.img-caption{text-align:center;font-size:.78rem;color:#666;margin-top:4px;margin-bottom:12px}
+
+/* ── SECTION DIVIDER ── */
+.sec-div{text-align:center;color:#ccc;font-size:1rem;letter-spacing:6px;margin:20px 0 14px}
+
+/* ── DRAWER ── */
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.28);z-index:200;backdrop-filter:blur(1px)}
+.drawer-overlay.open{display:block}
+.drawer{position:fixed;top:0;left:0;width:min(var(--drawer-w),96vw);height:100vh;background:#ffffff;z-index:201;transform:translateX(-110%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-right:2px solid var(--gold);box-shadow:6px 0 28px rgba(0,0,0,.22)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{background:var(--green);padding:15px 18px;display:flex;align-items:flex-start;gap:10px;justify-content:space-between;flex-shrink:0}
+.drawer-head-text h3{font-family:'Amiri',serif;font-size:1.08rem;color:#c8a84a;line-height:1.4}
+.drawer-head-text p{font-size:.76rem;color:#90b898;margin-top:3px;line-height:1.5}
+.drawer-close{background:none;border:none;color:#f5e8c0;font-size:1.3rem;cursor:pointer;padding:2px 6px;border-radius:4px;transition:background .15s;flex-shrink:0}
+.drawer-close:hover{background:rgba(255,255,255,.1)}
+.drawer-body{flex:1;overflow-y:auto;padding:18px;background:#ffffff}
+.dalil-card{background:#fafafa;border:1px solid #ddd;border-radius:7px;margin-bottom:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.dalil-type-bar{padding:7px 13px;font-size:.74rem;font-weight:700;display:flex;align-items:center;gap:6px;border-bottom:1px solid #ddd;color:#000}
+.dt-quran{background:#edf6f0}.dt-hadith{background:#f8f2e8}
+.dt-ijmaa{background:#eeeef8}.dt-qiyas{background:#f4f2ee}.dt-amal{background:#f2eef6}
+.dalil-body{padding:13px 15px;line-height:1.9;font-size:.88rem;color:#000}
+.dalil-intro{margin-bottom:6px;color:#333;font-size:.83rem}
+.dalil-nass{font-family:'Amiri',serif;font-size:1.02rem;color:#000;background:#fffbf0;padding:10px 13px;border-radius:5px;border-right:3px solid var(--gold);display:block;margin-bottom:7px;line-height:2}
+.dalil-source{font-size:.74rem;color:#777;display:block;margin-bottom:5px}
+.dalil-wajh{font-size:.8rem;color:#222;background:#f5f5f5;padding:8px 10px;border-radius:5px;border-right:2px solid #ccc;line-height:1.8}
+
+/* ── EDIT MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:12px;padding:24px;width:min(600px,100%);max-height:90vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.35);border:1px solid #ccc}
+.modal h3{font-family:'Amiri',serif;color:#000;font-size:1.15rem;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #ddd}
+.fg{margin-bottom:12px}
+.fg label{display:block;font-size:.82rem;font-weight:600;color:#333;margin-bottom:4px}
+.fg input,.fg textarea,.fg select{width:100%;padding:8px 11px;border:1px solid #ccc;border-radius:6px;font-family:'Scheherazade New',serif;font-size:.88rem;background:#fff;color:#000;outline:none;direction:rtl;transition:border-color .15s}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg textarea{resize:vertical;min-height:68px}
+.dalil-editor-wrap{background:#f8f8f8;border-radius:8px;padding:13px;margin-top:6px}
+.de-title{font-size:.78rem;font-weight:600;color:#333;margin-bottom:10px}
+.de-entry{background:#fff;border-radius:6px;padding:10px;margin-bottom:8px;border:1px solid #ddd}
+.de-row{display:flex;gap:8px;margin-bottom:6px;align-items:center}
+.de-row select,.de-row input{flex:1}
+.btn-add-de{width:100%;background:none;border:1px dashed #aaa;color:#888;padding:7px;border-radius:6px;font-family:'Scheherazade New',serif;font-size:.8rem;cursor:pointer;transition:all .15s}
+.btn-add-de:hover{border-color:var(--gold);color:var(--gold)}
+.btn-rm-de{background:#fde8e8;border:none;color:#c00;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:1rem;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.modal-btns{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+.btn-save{background:var(--green);color:#f5e8c0;border:none;padding:9px 22px;border-radius:8px;font-family:'Scheherazade New',serif;font-size:.9rem;font-weight:600;cursor:pointer}
+.btn-save:hover{background:var(--green2)}
+.btn-cancel{background:none;border:1px solid #ccc;color:#000;padding:9px 18px;border-radius:8px;font-family:'Scheherazade New',serif;font-size:.9rem;cursor:pointer}
+
+/* ── LOGIN ── */
+.login-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:400;align-items:center;justify-content:center;padding:16px}
+.login-bg.open{display:flex}
+.login-box{background:#fff;border-radius:12px;padding:30px;width:min(360px,100%);text-align:center;border:1px solid #ddd;box-shadow:0 8px 40px rgba(0,0,0,.35)}
+.login-box .ico{font-size:2rem;margin-bottom:8px}
+.login-box h3{font-family:'Amiri',serif;color:#000;font-size:1.2rem;margin-bottom:4px}
+.login-box p{color:#666;font-size:.82rem;margin-bottom:16px}
+.login-box input{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-family:'Scheherazade New',serif;font-size:.92rem;text-align:center;outline:none;margin-bottom:10px}
+.login-box input:focus{border-color:var(--gold)}
+.btn-login{width:100%;background:var(--green);color:#f5e8c0;border:none;padding:10px;border-radius:8px;font-family:'Scheherazade New',serif;font-size:.92rem;font-weight:600;cursor:pointer;margin-bottom:8px}
+.btn-login:hover{background:var(--green2)}
+.btn-login-cancel{background:none;border:none;color:#999;font-family:'Scheherazade New',serif;font-size:.82rem;cursor:pointer}
+.login-err{color:#c00;font-size:.78rem;margin-bottom:8px;display:none}
+
+mark{background:#ffe066;color:#000;border-radius:2px;padding:0 1px}
+.empty{text-align:center;padding:60px 20px;color:#aaa}
+
+/* ── PRINT ── */
+@media print{
+  header,.toc-sidebar,.drawer,.drawer-overlay,.modal-bg,.login-bg,
+  .fn-ref,.edit-masala-btn,.add-masala-zone,.ruling-badge{display:none!important}
+  .app-wrap{display:block}
+  .book-body{padding:10px 20px;max-width:100%;background:#fff}
+  .book-body::before{display:none}
+  .masala-text{border-bottom:none!important}
+  body{background:#fff;color:#000}
+  .book-section{page-break-before:always}
+  .book-section:first-child{page-break-before:auto}
+  .note-box{border:1px solid #ccc;background:#fff}
+  .prose-img{max-width:90%;page-break-inside:avoid}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  .toc-sidebar{position:fixed;top:0;right:0;width:78vw;height:100vh;z-index:150;transform:translateX(100%);transition:transform .3s}
+  .toc-sidebar.open{transform:translateX(0)}
+  .menu-toggle{display:block}
+  .book-body{padding:18px 16px 60px}
+  .book-body::before{right:10px}
+  #searchInput{width:110px}
+  :root{--drawer-w:96vw}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="site-title">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <span>📚</span>الفقه المالكي
+    </div>
+    <div class="header-tools">
+      <input type="search" id="searchInput" placeholder="🔍 ابحث...">
+      <button class="hbtn" id="printBtn" onclick="window.print()">🖨️ طباعة PDF</button>
+      <span class="admin-tag" id="adminTag">✏️ تحرير</span>
+      <button class="hbtn" id="loginBtn" onclick="openLogin()">دخول المحرر</button>
+      <button class="hbtn" id="logoutBtn" onclick="doLogout()">خروج</button>
+    </div>
+  </div>
+</header>
+
+<div id="tocOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:149" onclick="closeTOC()"></div>
+
+<div class="app-wrap">
+  <nav class="toc-sidebar" id="tocSidebar">
+    <div class="toc-head">📖 الفهرس</div>
+    <div id="tocBody"></div>
+  </nav>
+  <div class="book-body" id="bookBody">
+    <div class="basmalah">﷽</div>
+    <div id="booksRoot"></div>
+  </div>
+</div>
+
+<!-- DRAWER -->
+<div class="drawer-overlay" id="dOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-head-text">
+      <h3 id="dTitle">الأدلة الفقهية</h3>
+      <p id="dSub"></p>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()">✕</button>
+  </div>
+  <div class="drawer-body" id="dBody"></div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal-bg" id="editModal">
+  <div class="modal">
+    <h3 id="editTitle">✏️ تعديل مسألة</h3>
+    <div class="fg"><label>نص المسألة</label><textarea id="eText" rows="3"></textarea></div>
+    <div class="fg">
+      <label>الحكم</label>
+      <select id="eRuling">
+        <option value="">— بدون تصنيف —</option>
+        <option value="wajib">واجب</option><option value="mandub">مستحب</option>
+        <option value="mubah">مباح</option><option value="makruh">مكروه</option>
+        <option value="haram">حرام</option><option value="sahih">صحيح</option>
+        <option value="fasid">فاسد</option><option value="batil">باطل</option>
+      </select>
+    </div>
+    <div class="dalil-editor-wrap">
+      <div class="de-title">الأدلة (اختياري)</div>
+      <div id="deList"></div>
+      <button class="btn-add-de" onclick="addDE()">+ إضافة دليل</button>
+    </div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeEditModal()">إلغاء</button>
+      <button class="btn-save" onclick="saveEdit()">💾 حفظ</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="login-bg" id="loginModal">
+  <div class="login-box">
+    <div class="ico">🔐</div>
+    <h3>دخول المحرر</h3>
+    <p>أدخل كلمة المرور للتعديل</p>
+    <p class="login-err" id="loginErr">❌ كلمة مرور خاطئة</p>
+    <input type="password" id="pwInput" placeholder="كلمة المرور" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn-login" onclick="doLogin()">دخول</button>
+    <button class="btn-login-cancel" onclick="closeLogin()">إلغاء</button>
+  </div>
+</div>
+
+<script>
+const PASS = "maliki123";
+
+// ════════════════════════════════════════
+// DATA — محتوى الملف الفعلي
+// ════════════════════════════════════════
+let db = { books: [
+
+/* ══════════════════════════════════════════
+   مقدمة فقهية وأصولية
+══════════════════════════════════════════ */
+{
+  id:"b0", title:"مقدمة فقهية وأصولية",
+  chapters:[
+    {
+      id:"c00", title:"باب أقسام الأحكام",
+      masail:[
+        {id:"m001",text:"الحكم الشرعي: خطاب الشارع المتعلق بأفعال العباد اقتضاءً أو تخييراً أو وضعاً، وينقسم إلى قسمين: الحكم الوضعي والحكم التكليفي.",ruling:"",adilla:[]},
+        {id:"m002",text:"الحكم الوضعي: هو علامة وضعها الشرع على الحكم؛ ومنها: السبب وهو ما يلزم من وجوده وجود الحكم ومن عدمه العدم (مثاله: إذا غربت الشمس وجبت المغرب)، والشرط وهو ما يلزم من عدمه العدم ولا يلزم من وجوده الوجود (كالوضوء للصلاة)، والمانع وهو ما يلزم من وجوده العدم (كالحيض يمنع الصلاة). وأيضاً الصحة والبطلان، والرخصة والعزيمة.",ruling:"",adilla:[]},
+        {id:"m003",text:"شرط الوجوب: ما يكون به الإنسان مُكلَّفاً، كالعقل والبلوغ — يلزم من عدم البلوغ عدم وجوب الصلاة، ولا يلزم من البلوغ وجوبها إذ قد يكون بالغاً مجنوناً. وشرط الصحة: ما يكون لاعتداد العبادة كاستقبال القبلة في الصلاة.",ruling:"",adilla:[]},
+        {id:"m004",text:"الحكم التكليفي: هي أحكام الاقتضاء والتخيير الخمسة عند المالكية؛ وهي: الفرض والسنة والمباح والمكروه والحرام.",ruling:"",adilla:[]},
+        {id:"m005",text:"الفرض: ما أمر الشارعُ المكلَّفَ بفعله أمراً جازماً، يثاب بفعله ويعاقب بتركه إلا أن يعفو الله. وينقسم إلى فرض عين (ما فرضه الشرع على كل مكلف بعينه) وفرض كفاية (إذا تحقق بالبعض انتقل حكمه للآخرين إلى الندب).",ruling:"wajib",adilla:[]},
+        {id:"m006",text:"السنة: ما أمر الشرع بفعله أمراً غير جازم، يثاب بفعله ولا يعاقب بتركه. وتنقسم إلى: سنة عينية وسنة كفائية. وأصولياً إلى أربع: السنة المؤكدة، والرغيبة، والمندوب، والتطوع.",ruling:"mandub",adilla:[]},
+        {id:"m007",text:"المباح: هو العمل الذي يستوي فعله مع تركه في الأصل، لا يثاب فاعله ولا يعاقب تاركه.",ruling:"mubah",adilla:[]},
+        {id:"m008",text:"المكروه: ما نهى عنه الشرع نهياً غير جازم، يثاب تاركه ولا يعاقب فاعله. وينقسم إلى: خلاف الأولى (وهو ترك سنة) والمكروه (فعل ما نهى الشرع عنه نهياً غير جازم).",ruling:"makruh",adilla:[]},
+        {id:"m009",text:"الحرام: هو الفعل الذي نهى الشرع عن فعله نهياً جازماً، يثاب تاركه ويعاقب فاعله إلا أن يعفو الله.",ruling:"haram",adilla:[]}
+      ]
+    },
+    {
+      id:"c01", title:"باب العبادة",
+      masail:[
+        {id:"m010",text:"العبادة: هي قصد التقرب مع اعتقاد ألوهية المتقرب إليه. والنية هي قصد الشيء مقترناً بفعله، والإرادة هي مشيئة القلب لفعله.",ruling:"",adilla:[]},
+        {id:"m011",text:"المرائي لا يخرج من الملة ولا يُحكم عليه بعبادة غير الله؛ لأنه لم يعتقد ألوهية الناس وإن قصد التقرب إليهم. لكنه يأثم ولا يثاب لعدم إخلاصه، وفعله شرك أصغر.",ruling:"haram",adilla:[]}
+      ]
+    },
+    {
+      id:"c02", title:"باب الحكم الشرعي التعبدي والعادي",
+      masail:[
+        {id:"m012",text:"تنقسم الأحكام الشرعية إلى عبادية وعادية. العبادي: ما جعله الشرع قصداً وتقرباً لله ولا تُعقل له علة قريبة. والعادي: ما كان وسيلةً لا قصداً.",ruling:"",adilla:[]},
+        {id:"m013",text:"العبادات لا تصح إلا بنية كالصلاة والزكاة والصيام والحج والجهاد. أما العادات كوفاء الديون والنفقة فتُجزئ دون نية وإن كان فعلها بنية أفضل.",ruling:"wajib",adilla:[]},
+        {id:"m014",text:"العبادات غير معللة: لا يُعلل لها بعلة قريبة، فلا يُسأل لماذا وجبت ركعتان للفجر دون غيرها، ولماذا نصاب الزكاة كذا، وعدد الركعات كذا — فهذه تقديرات تعبدية.",ruling:"",adilla:[]},
+        {id:"m015",text:"الأصل التوسع في العادات والتضييق في العبادات. فالعبادات لا تزيد على ما شُرع، أما العادات فبابها واسع كالعقود وسائل التواصل المعاصرة وطرق التوثيق.",ruling:"",adilla:[]}
+      ]
+    },
+    {
+      id:"c03", title:"العلة والحكمة",
+      masail:[
+        {id:"m016",text:"لكي تكون علة الحكم صحيحة يجب أن تكون وصفاً ظاهراً منضبطاً مناسباً للحكم يمكن إدراكه وتطبيقه في نظائره.",ruling:"",adilla:[
+          {type:"quran",text:"قال الله تعالى في بيان حكمة تحريم الخمر لا علته",nass:"إِنَّمَا يُرِيدُ الشَّيْطَانُ أَن يُوقِعَ بَيْنَكُمُ الْعَدَاوَةَ وَالْبَغْضَاءَ فِي الْخَمْرِ وَالْمَيْسِرِ",source:"المائدة: ٩١",wajh:"هذا النص يبين حكمة تحريم الخمر وهي تجنب العداوة، لكن العلة الحقيقية هي الإسكار لأنه وصف ظاهر منضبط — متى وُجد حُرِّم، ومتى انتفى زال الحكم. ولهذا يُقاس عليها فيُقال: كل ما أسكر كثيره فحرام قليله."}
+        ]}
+      ]
+    }
+  ]
+},
+
+/* ══════════════════════════════════════════
+   كتاب الطهارة
+══════════════════════════════════════════ */
+{
+  id:"b1", title:"كتاب الطهارة",
+  chapters:[
+    {
+      id:"c10", title:"باب مياه الطهارة",
+      masail:[
+        {id:"m101",text:"الطهارة لغةً: النظافة والتنزه من الأوساخ. واصطلاحاً: صفة حكمية.",ruling:"",adilla:[]},
+        {id:"m102",text:"ينقسم الماء إلى ثلاثة أقسام: الماء الطهور، والماء الطاهر، والماء النجس.",ruling:"",adilla:[]},
+        {id:"m103",text:"الماء الطهور: هو الماء الطاهر المطهِّر، صالح في العبادات والعادات.",ruling:"mubah",adilla:[
+          {type:"quran",text:"قال الله تعالى",nass:"وَأَنزَلْنَا مِنَ السَّمَاءِ مَاءً طَهُورًا",source:"الفرقان: ٤٨",wajh:"وصف الله الماء النازل من السماء بـ(طهور) وهو صيغة مبالغة تدل على كونه طاهراً في نفسه مطهراً لغيره."},
+          {type:"hadith",text:"قال النبي ﷺ عن ماء البحر",nass:"هُوَ الطَّهُورُ مَاؤُهُ، الحِلُّ مَيْتَتُهُ",source:"رواه مالك في الموطأ وأبو داود والترمذي",wajh:"دلَّ على أن الماء المطلق طهور يتطهر به."}
+        ]},
+        {id:"m104",text:"ما يُلحق بالماء الطهور: ما يخالط الماء غالباً كالتغير اليسير من أوراق الشجر أو أناني البلاستيك أو المواد التي تضعها الدول في مياه الشبكات للضرورة — والضابط: عسر الاحتراز.",ruling:"mubah",adilla:[]},
+        {id:"m105",text:"الماء الطهور يُكره استعماله — مع وجود غيره — إذا كان: مستعملاً في رفع الحدث، أو قليلاً وقعت فيه نجاسة لم تغيره (والحد بين الكثير والقليل آنية الوضوء)، أو يسيراً ولغ فيه الكلب، أو مشمَّساً بقُطر حار.",ruling:"makruh",adilla:[]},
+        {id:"m106",text:"الماء الطاهر: هو الماء المتغير بغير نجس مما لا يخالط الماء غالباً — سواء بالملاصقة (كالزيت والبنزين) أو بالمخالطة (كاللبن). هذا الماء صالح في العادات كالشرب والطبخ ولا يصلح في العبادات كإزالة النجاسة ورفع الحدث.",ruling:"mubah",adilla:[]},
+        {id:"m107",text:"الماء النجس: هو الماء المتغير بنجاسة كالدم والميتة والبول — لا يصلح لا في العبادات ولا في العادات، ولكن يجوز استعماله في الزراعة أو محطات التكرير مما لا أثر له على الإنسان.",ruling:"haram",adilla:[]}
+      ]
+    },
+    {
+      id:"c11", title:"باب الأعيان الطاهرة والنجسة",
+      masail:[
+        {id:"m111",text:"الجماد: ما ليس بحيٍّ ولا منفصل عن حي، كالنباتات — طاهر مطلقاً من المانعات.",ruling:"mubah",adilla:[]},
+        {id:"m112",text:"الجلالة: ما تغذّت بالنجاسة — حكمها مكروه لا نجس في الأصل.",ruling:"makruh",adilla:[]},
+        {id:"m113",text:"دم الحجامة نجس. والدم غير المسفوح (كالملتصق بلحم وعظام الحيوانات) طاهر.",ruling:"",adilla:[]},
+        {id:"m114",text:"العطور والمواد المحتوية على كحول: القاعدة: ما أسكر ملء البطن منه فقليله حرام. والكحول ليس نجساً لعينه — النجس هو الخمر. فإن كانت نسبة الكحول 1% أو أقل فليست خمراً. وإن كانت بين 1% و4% فالمسألة فيها نظر. وإن كانت 4% أو أكثر فهي خمر نجسة حرام، وعلى ذلك أكثر العطور المنتشرة اليوم خمر نجسة.",ruling:"haram",adilla:[]}
+      ]
+    },
+    {
+      id:"c12", title:"باب الطهارة من الخبث",
+      masail:[
+        {id:"m121",text:"يجب تطهير البدن والثوب وكل ما يحمله الإنسان والمكان بحيث تكون المواضع التي يلمسها المصلي بجسده طاهرة من الخبث لتصح الصلاة — بشروط أربعة: التذكر، والقدرة، وسعة الوقت، وألا يكون من المعفو عنه.",ruling:"wajib",adilla:[]},
+        {id:"m122",text:"المعفو عنه من النجاسات: ثوب المرضعة والقصاب ونحوهما (ولكن عليهم الاحتراز)، وبلل الباسور في الثياب، والطين الرشاش والمطر إذا اختلطا بنجاسة، والحدث المستنكح (سلس البول أو الريح)، والدمل الذي لم يُعصر وسال بنفسه، واليسير دون الدرهم من الدم وأثر الذباب.",ruling:"mubah",adilla:[]},
+        {id:"m123",text:"الطهارة من الخبث تكون إما بالإحالة (تحول المادة من حالة لأخرى كتحول الخمر إلى خل)، أو بالإزالة (كإزالة ميتة من الماء)، أو بهما معاً كالدباغ.",ruling:"",adilla:[]}
+      ]
+    },
+    {
+      id:"c13", title:"الاستبراء والاستنجاء والاستجمار",
+      masail:[
+        {id:"m131",text:"الاستبراء: طلب البراءة وهو واجب — التأكد من خروج البول والغائط. ولا يجوز الاستنجاء والاستجمار قبل طلب البراءة. وغلبة الظن بخروج البول من القصبة يحصل بالضغط بالأصبع وتحريك العضو.",ruling:"wajib",adilla:[]},
+        {id:"m132",text:"الاستنجاء: إزالة ما على المخرجين من الأذى بالماء.",ruling:"wajib",adilla:[]},
+        {id:"m133",text:"الاستجمار: إزالة ما على المخرجين بما توفرت فيه الشروط الخمسة: الجفاف (كالحجر والورق غير المبلل)، والطهارة، وألا يكون أملس بدرجة كبيرة، وألا يكون مؤذياً، وأن يكون غير محترم (لا ذهباً ولا فضةً ولا طعاماً ولا علماً شرعياً).",ruling:"wajib",adilla:[]},
+        {id:"m134",text:"الشروط الثلاثة الأولى في الاستجمار: إن لم تتحقق بطل الاستجمار. والشرطان الأخيران: إن لم يتحققا صح الاستجمار مع الإثم. ويجوز الاستجمار بوجود الماء.",ruling:"",adilla:[]}
+      ]
+    },
+    {
+      id:"c14", title:"باب الوضوء",
+      masail:[
+        {id:"m141",text:"الوضوء اصطلاحاً: طهارة مائية في أعضاء مخصوصة يرتفع بها الحدث الأصغر. وهو مشتق من الوضاءة بمعنى الحسن والنظافة.",ruling:"wajib",adilla:[
+          {type:"quran",text:"قال الله تعالى",nass:"يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ",source:"المائدة: ٦",wajh:"أمر الله بأعضاء الوضوء الأربعة وترتيبها."},
+          {type:"hadith",text:"قال النبي ﷺ",nass:"مَنْ تَوَضَّأَ نَحْوَ وُضُوئِي هَذَا ثُمَّ صَلَّى رَكْعَتَيْنِ لَا يُحَدِّثُ فِيهِمَا نَفْسَهُ غُفِرَ لَهُ مَا تَقَدَّمَ مِنْ ذَنْبِهِ",source:"متفق عليه (من حديث عثمان بن عفان)",wajh:"بيَّن النبي ﷺ صفة الوضوء بالفعل ثم أخبر بفضله."}
+        ]},
+        {id:"m142",text:"يحرم على المحدث: الصلاة (فريضةً أو نافلة)، والطواف، ومس المصحف أو حمله ولو بعلاقة. ويستحب النوم على طهارة وأن يكون المسلم على طهارة طوال الوقت.",ruling:"haram",adilla:[]},
+        {id:"m143",text:"فرائض الوضوء سبعة: النية (مع أول فرض وجوباً)، والدلك (تحريك باطن الكف على العضو)، والمواالة (الفور بين الأعضاء بلا تفريق فاحش)، وغسل الوجه (من منبت الشعر إلى أسفل الذقن ومن الأذن إلى الأذن)، وغسل اليدين إلى المرفقين مع تخليل الأصابع، ومسح الرأس كاملاً والشعر كله، وغسل الرجلين مع الكعبين.",ruling:"wajib",adilla:[
+          {type:"quran",text:"قال الله تعالى",nass:"فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ وَامْسَحُوا بِرُءُوسِكُمْ وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ",source:"المائدة: ٦",wajh:"نصَّت الآية على الأعضاء الأربعة، والدلك والمواالة مستفادان من السنة وعمل أهل المدينة."}
+        ]},
+        {id:"m144",text:"الدلك واجب في الوضوء عند المالكية: لأن الغسل لغةً لا يكون إلا بصبّ الماء مع الدلك، وإلا فوضع الماء دون دلك يُسمى إسالةً لا غسلاً. (بخلاف الجمهور الذين يجعلون الدلك سنة).",ruling:"wajib",adilla:[]},
+        {id:"m145",text:"المواالة (الفور): إن نسي إكمال الوضوء فعليه أن يفعل ما نسي فقط ولو طالت المدة مع تجديد النية. وإن كان عاجزاً غير مقصر فيبني ويكمل دون الحاجة لتجديد النية. وإن كان مقصراً بسبب ماء غير كافٍ فيفسد وضوؤه.",ruling:"wajib",adilla:[]},
+        {id:"m146",text:"مسح الرأس: يجب استيعاب الرأس كله بالمسح والشعر كاملاً ولو للأنثى. وغسل الرجلين مع الكعبين (والكعبان غير العقبين)، ويجب غسل الكعبين والعقبين والأصابع كاملة.",ruling:"wajib",adilla:[
+          {type:"hadith",text:"قال النبي ﷺ",nass:"وَيْلٌ لِلأَعْقَابِ مِنَ النَّارِ",source:"متفق عليه (من حديث أبي هريرة)",wajh:"دلَّ الحديث على وجوب غسل العقبين وعدم إهمالها."}
+        ]},
+        {id:"m147",text:"يجوز المسح على الخفين بدل غسل الرجلين — وجوباً من أعلى الخف، وسنةً من أسفله. ولا مدة محددة، ويندب خلعه يوم الجمعة أو كل أسبوع.",ruling:"mubah",adilla:[]}
+      ]
+    },
+    {
+      id:"c15", title:"نواقض الوضوء",
+      masail:[
+        {id:"m151",text:"تنقسم نواقض الوضوء إلى ثلاثة: أحداث، وأسباب أحداث، وما ليس حدثاً ولا سببه.",ruling:"",adilla:[]},
+        {id:"m152",text:"الأحداث (الخارج المعتاد من المخرج المعتاد): من القُبل ستة: البول، والمذي (يوجب غسل الذكر كاملاً بنية)، والودي، ودم الاستحاضة، والهادي، والمني من غير شهوة. ومن الدبر اثنان: الغائط والريح.",ruling:"haram",adilla:[
+          {type:"hadith",text:"قال النبي ﷺ",nass:"لَا تُقْبَلُ صَلَاةُ مَنْ أَحْدَثَ حَتَّى يَتَوَضَّأَ",source:"متفق عليه",wajh:"دلَّ الحديث على أن الحدث ناقض للوضوء وشرط قبول الصلاة الطهارة."}
+        ]},
+        {id:"m153",text:"خروج القيء لا ينقض الوضوء عند المالكية. وكذلك الدم الخارج من غير السبيلين لا ينقض — أما دم النفاس فينقض.",ruling:"mubah",adilla:[]},
+        {id:"m154",text:"أسباب الأحداث أربعة: زوال العقل (بالسكر أو الجنون أو الإغماء أو النوم)، والقبلة (إذا كانت محرمة لامرأة تُشتهى أو للزوج أو الجارية)، واللمس (لمس الرجل للمرأة بقصد اللذة أو وجودها)، ومس الذكر (بباطن الكف أو جنبه أو جنب الأصبع مباشرة).",ruling:"haram",adilla:[
+          {type:"quran",text:"قال الله تعالى",nass:"أَوْ لَامَسْتُمُ النِّسَاءَ",source:"المائدة: ٦",wajh:"الأصل حمل لفظ المس على حقيقته اللغوية لا على المجاز، فدلّ على أن اللمس بشهوة ناقض للوضوء."}
+        ]},
+        {id:"m155",text:"النوم وأقسامه ستة: طويل ثقيل (ينقض باتفاق)، قصير ثقيل (ينقض على المشهور)، طويل خفيف قائماً أو جالساً (لا ينقض ويستحب منه الوضوء)، قصير خفيف قائماً أو جالساً (لا ينقض)، طويل أو قصير خفيف ساجداً أو مستلقياً (فيه خلاف). وميزان ثقل النوم: عدم إدراك ما يحدث حوله أو سقوط شيء من يده أو سيلان لعابه.",ruling:"",adilla:[]},
+        {id:"m156",text:"الشك في الحدث من مفردات المذهب المالكي: إذا توضأ يقيناً وشك في الحدث أو ترجح له أنه أحدث — توضأ وجوباً. أما إذا تيقن الوضوء وغلب على ظنه عدم الحدث — توضأ استحباباً. والشك داخل الصلاة لا ينقض الوضوء.",ruling:"",adilla:[]}
+      ]
+    },
+    {
+      id:"c16", title:"سنن الوضوء ومستحباته ومكروهاته",
+      masail:[
+        {id:"m161",text:"سنن الوضوء سبع: غسل اليدين إلى الكوعين قبل إدخالهما في الإناء، والمضمضة الأولى، والاستنشاق الأول، والاستنثار الأول، ورد مسح الرأس، ومسح الأذنين ظاهرهما وباطنهما مع تجديد الماء، وترتيب فرائض الوضوء.",ruling:"mandub",adilla:[]},
+        {id:"m162",text:"مستحبات الوضوء: التسمية (قبل دخول الخلاء)، والوضوء في مكان طاهر، وتقليل الماء (دون الإخلال بالفرائض والسنن)، والغسلة الثانية والثالثة، والبدء بغسل الميامن، والسواك، والسكوت أثناء الوضوء، والدعاء المأثور بعده.",ruling:"mandub",adilla:[]},
+        {id:"m163",text:"مكروهات الوضوء: الزيادة على ما شُرع عدداً أو قدراً — كالمسح أكثر من مرة، أو الغسل أو المضمضة أو الاستنشاق أكثر من ثلاث مرات، أو مسح الرقبة.",ruling:"makruh",adilla:[]}
+      ]
+    },
+    {
+      id:"c17", title:"باب الدم الخارج من المرأة",
+      masail:[
+        {id:"m171",text:"أنواع الدم الخارج من المرأة ثلاثة: الحيض، والنفاس، والاستحاضة.",ruling:"",adilla:[]},
+        {id:"m172",text:"الحيض: دم أو صفرة أو كدرة يخرج بنفسه من قُبل القادرة على الحمل غالباً. أكثره 15 يوماً إلا في الحامل. وتعتبر المرأة حائضاً بمجرد نزول الدم ولو يسيراً (دفعة واحدة). والطهر أقله 15 يوماً وأكثره لا حد له، ويُعرف بالقصة البيضاء أو جفاف الدم.",ruling:"",adilla:[]},
+        {id:"m173",text:"النفاس: هو الدم الخارج من قِبَل المرأة مع الولادة أو بعدها. أقله دفعة واحدة كالحيض، وأكثره ستون يوماً. وتترتب عليه أحكام الحيض.",ruling:"",adilla:[]},
+        {id:"m174",text:"الاستحاضة: دم استمر بعد تمام حيضها. تتميز المرأة بينه وبين الحيض بنزوله بعد انتهاء مدة حيضها بثلاثة أيام، أو بلونه الخفيف. المستحاضة تتوضأ لكل صلاة استحباباً، وعاملها المالكية معاملة السلس.",ruling:"mandub",adilla:[
+          {type:"hadith",text:"عن فاطمة بنت أبي حبيش رضي الله عنها أنها أتت النبي ﷺ وقالت",nass:"يا رسول الله إني أُستحاض فلا ينقطع عني الدم",source:"رواه أبو داود",wajh:"أمرها النبي ﷺ أن تدع الصلاة أيام أقرائها ثم تغتسل وتتوضأ لكل صلاة وتصلي وإن قطر الدم على الحصير."}
+        ]}
+      ]
+    },
+    {
+      id:"c18", title:"باب الغسل",
+      masail:[
+        {id:"m181",text:"الغسل: غسل جميع أعضاء الجسد بنية التقرب إلى الله.",ruling:"wajib",adilla:[]},
+        {id:"m182",text:"نواقض الغسل (موجباته) أربعة: الحيض (لا يُرفع إلا بعد انقطاع الدم)، والنفاس، وإنزال المني بلذة معتادة، والإدخال أو الجماع ولو لم ينزل شيء حلالاً أو حراماً.",ruling:"wajib",adilla:[
+          {type:"hadith",text:"عن أم سليم رضي الله عنها أنها قالت للنبي ﷺ",nass:"إن الله لا يستحيي من الحق، فهل على المرأة من غسل إذا احتلمت؟",source:"متفق عليه",wajh:"قال النبي ﷺ: نعم إذا رأت الماء — فدلَّ على وجوب الغسل على المرأة بالإنزال."}
+        ]},
+        {id:"m183",text:"نواقض الغسل تحرم: دخول المسجد، والصلاة، ومس القرآن. والحيض والنفاس يحرمان الوطء والصيام وتطليق الزوجة. والجنابة والوطء يحرمان قراءة القرآن.",ruling:"haram",adilla:[]},
+        {id:"m184",text:"فرائض الغسل أربع: النية (مع بداية الغسل)، والدلك، والمواالة، وغسل جميع أعضاء البدن غسلاً تاماً (ويشمل تخليل شعر الجسد كثيفاً أو خفيفاً).",ruling:"wajib",adilla:[]},
+        {id:"m185",text:"سنن الغسل ثلاث: مسح ثقب الأذن، والمضمضة مرة واحدة، والاستنشاق والاستنثار مرة واحدة. ومندوبات الغسل: التسمية، ومراعاة الترتيب (الفرج ثم الكفان ثم أعضاء الوضوء ثم الرأس ثلاث غرفات ثم سائر الجسد من الأعلى والميامن)، وتقليل الماء.",ruling:"mandub",adilla:[]}
+      ]
+    },
+    {
+      id:"c19", title:"باب التيمم",
+      masail:[
+        {id:"m191",text:"التيمم يحل محل الغسل أو الوضوء لإحدى هذه الأسباب: عدم وجود الماء، أو عجز الوصول إليه، أو عدم الكفاية للطهارة والشرب معاً، أو مرض يمنع استخدام الماء، أو خوف إبطاء الشفاء، أو ضيق الوقت.",ruling:"mubah",adilla:[]},
+        {id:"m192",text:"ضوابط التيمم: يجب المواالة بين التيمم والفريضة. ولا يحل أكثر من فريضة واحدة بتيمم واحد (لكن يحل الفريضة مع سنة مؤكدة كالوتر أو فرض كفاية كالجنازة). ولا يحل التيمم للنافلة إلا للمريض والمسافر.",ruling:"",adilla:[]},
+        {id:"m193",text:"نواقض التيمم: نواقض الوضوء والغسل، وإمكانية استخدام الماء قبل الشروع في الصلاة أو بعد انتهائها.",ruling:"",adilla:[]},
+        {id:"m194",text:"الصعيد: ما صعد على الأرض كالتراب والحجر الطبيعي. أما الإسمنت والطلاء وكل ما دخلته الصناعة البشرية فلا يصح التيمم به.",ruling:"",adilla:[]},
+        {id:"m195",text:"فرائض التيمم خمس: النية (بنية أداء الواجب أو استباحة الممنوع لا رفع الحدث — وهي عند الضربة الأولى)، والمواالة، وضرب الصعيد (وضع الكفين عليه)، ومسح الوجه كاملاً، ومسح اليدين إلى الكوعين بباطن الكف مع تخليل الأصابع وإزالة الخاتم.",ruling:"wajib",adilla:[]},
+        {id:"m196",text:"سنن التيمم: مسح اليدين إلى المرافق، والضربة الثانية للصعيد، والترتيب بين أفعاله. ومندوباته: التسمية، وتقديم اليمنى على اليسرى.",ruling:"mandub",adilla:[]}
+      ]
+    }
+  ]
+},
+
+/* ══════════════════════════════════════════
+   كتاب الصلاة
+══════════════════════════════════════════ */
+{
+  id:"b2", title:"كتاب الصلاة",
+  chapters:[
+    {
+      id:"c20", title:"باب شروط الصلاة",
+      masail:[
+        {id:"m201",text:"شروط الصلاة تنقسم إلى شروط الوجوب (البلوغ، والعقل، وبلوغ الدعوة، ودخول الوقت، والقدرة على استعمال الطهور، والخلو من دم الحيض والنفاس، وعدم النوم والغفلة) وشروط الصحة (الإسلام، واستقبال القبلة، والطهارة من الحدث، وستر العورة، وطهارة الخبث).",ruling:"wajib",adilla:[
+          {type:"hadith",text:"قال النبي ﷺ",nass:"لَا تُقْبَلُ صَلَاةُ مَنْ أَحْدَثَ حَتَّى يَتَوَضَّأَ",source:"متفق عليه",wajh:"دلَّ على اشتراط الطهارة لصحة الصلاة وقبولها."}
+        ]},
+        {id:"m202",text:"الطهارة من الحدث: هي الشرط الوحيد الذي لا يُشترط لوجوبه التذكر والقدرة.",ruling:"wajib",adilla:[]},
+        {id:"m203",text:"العورة عند المالكية قسمان: مغلظة (عند الرجل السوأتان، وعند المرأة ما بين السرة والركبة)، ومخففة (عند الرجل ما بين السرة والركبة، وعند المرأة جميع جسدها عدا الوجه والكفين). إن كُشفت المغلظة نسياناً أو عجزاً ندب الإعادة في الوقت. وإن كُشفت المخففة تصح الصلاة مع الإثم ولا تعاد.",ruling:"wajib",adilla:[]},
+        {id:"m204",text:"شروط صحة الصلاة تشمل أيضاً: ترك كلام الناس لغير إصلاح الصلاة، وترك الأفعال التي ليست من جنسها (ضابطه: إذا رأى الناسُ المصليَ علموا أنه في صلاة)، وتيقن دخول الوقت.",ruling:"wajib",adilla:[]}
+      ]
+    },
+    {
+      id:"c21", title:"باب أوقات الصلاة",
+      masail:[
+        {id:"m211",text:"وقت الظهر: يبدأ من الزوال (حين تبدأ الشمس بالميل نحو المغرب) وينتهي اختيارياً حين يصير ظل كل شيء مثله، وضرورياً قُبيل الغروب بما يكفي لصلاة العصر.",ruling:"wajib",adilla:[]},
+        {id:"m212",text:"وقت العصر: يبدأ حين يصير ظل كل شيء مثله، وينتهي اختيارياً حين يصير مثليه، وضرورياً حين غروب الشمس.",ruling:"wajib",adilla:[]},
+        {id:"m213",text:"وقت المغرب الاختياري ضيق جداً — لا يمتد إلا بما يحتاجه المصلي للطهارة وإيقاع الصلاة. وهناك قول قوي (مذهب الموطأ) بامتداده إلى غياب الشفق الأحمر.",ruling:"wajib",adilla:[]},
+        {id:"m214",text:"وقت العشاء الاختياري: من زوال الشفق الأحمر إلى ثلث الليل الأول. ويكره النوم قبلها والحديث لغير شغل بعدها.",ruling:"wajib",adilla:[]},
+        {id:"m215",text:"وقت الفجر الاختياري: من طلوع الفجر الصادق إلى الإسفار البيّن. (الفجر الصادق: الضوء المنتشر في الأفق عرضاً، والكاذب: ضوء ينتشر طولاً). وفي وجود وقت ضروري لصلاة الصبح خلاف في معتمد المذهب.",ruling:"wajib",adilla:[]}
+      ]
+    },
+    {
+      id:"c22", title:"باب الأذان والإقامة",
+      masail:[
+        {id:"m221",text:"الأذان لغةً: الإعلام. واصطلاحاً: الإعلام بدخول وقت الصلاة بألفاظ مخصوصة. حكمه: فرض كفاية في المصر. وفي المساجد والجماعات الراتبة: سنة مؤكدة. وأذان الرجل لخاصة نفسه: مستحب.",ruling:"mandub",adilla:[]},
+        {id:"m222",text:"الإقامة: سنة مؤكدة لكل فريضة، بل هي آكد من الأذان لكل صلاة. وحق المرأة في الإقامة: مستحب.",ruling:"mandub",adilla:[]},
+        {id:"m223",text:"صيغة الأذان المالكي: الله أكبر الله أكبر / أشهد أن لا إله إلا الله أشهد أن لا إله إلا الله / أشهد أن محمداً رسول الله أشهد أن محمداً رسول الله (مرتان أولاهما خفض وثانيتهما رفع) / حي على الصلاة حي على الصلاة / حي على الفلاح حي على الفلاح / الله أكبر الله أكبر / لا إله إلا الله. وفي الصبح: الصلاة خير من النوم بعد حي على الفلاح.",ruling:"",adilla:[]}
+      ]
+    },
+    {
+      id:"c23", title:"باب فرائض الصلاة",
+      masail:[
+        {id:"m231",text:"كل أفعال الصلاة فريضة إلا ثلاثة: الجلوس للتشهد، ورفع اليدين مع تكبيرة الإحرام، والتيامن في السلام. ولا يوجد قول مفروض إلا ثلاثة: تكبيرة الإحرام، والسلام، والفاتحة.",ruling:"wajib",adilla:[]},
+        {id:"m232",text:"النية: وقتها مع تكبيرة الإحرام أو قبيلها. ما هو معيَّن في الخارج لا يشترط تعيينه في القلب إلا على سبيل الكمال. وفي صلاة الجماعة: صلاة الجمعة والخوف والجمع للمطر يجب أن ينوي الإمام الإمامة.",ruling:"wajib",adilla:[]},
+        {id:"m233",text:"تكبيرة الإحرام: لفظ (الله أكبر) تعبدي لا يجزئ عنه لفظ آخر. يجب أن يبدأها المصلي قائماً. إن بدأها قائماً ثم انحنى وهو يكبر فصلاته صحيحة. وإن بدأها وهو منحنٍ فصلاته باطلة.",ruling:"wajib",adilla:[]},
+        {id:"m234",text:"القيام: يجب الانتصاب والرأس مع الجسد، والبصر باتجاه القبلة.",ruling:"wajib",adilla:[]},
+        {id:"m235",text:"قراءة الفاتحة: فريضة على الإمام والمنفرد دون المأموم. واختُلف هل الوجوب لجميع الركعات أم لجُلِّها.",ruling:"wajib",adilla:[]},
+        {id:"m236",text:"فرائض الصلاة الأخرى: الركوع، والرفع منه، والسجود، والجلسة بين السجدتين، والسلام بلفظ (السلام عليكم)، والجلوس للسلام، وترتيب الأركان مع بعضها، والطمأنينة ولو بأقل الزمن، ومتابعة الإمام بتكبيرة الإحرام والسلام.",ruling:"wajib",adilla:[]}
+      ]
+    },
+    {
+      id:"c24", title:"باب سنن الصلاة ومستحباتها ومكروهاتها ومبطلاتها",
+      masail:[
+        {id:"m241",text:"سنن الصلاة: قراءة ما تيسر من القرآن بعد الفاتحة، والقيام لذلك، والجهر فيما يُجهر فيه، والسر فيما يُسرُّ، والتسميع للإمام والفذ، وتكبيرات الانتقال، والتشهدان، والجلوس للتشهد، والتسليمة الثانية والثالثة للمأموم، والجهر بالتسليمة الواجبة، والزيادة على القدر الواجب من الطمأنينة.",ruling:"mandub",adilla:[]},
+        {id:"m242",text:"مستحبات الصلاة: رفع اليدين حذو المنكبين، والتأمين في السر، وتطويل القراءة في الركعة الأولى، والسجود على الأعضاء السبعة، والدعاء بالسر، والسترة للإمام والمنفرد، والتورك في التشهد، والقنوت في الصبح.",ruling:"mandub",adilla:[]},
+        {id:"m243",text:"مكروهات الصلاة: البسملة والتعوذ في الفريضة، والسجود على الثياب رفاهيةً، والقراءة في الركوع والسجود، والالتفات بلا حاجة، وتشبيك الأصابع، والإقعاء، وتغميض العين (إلا لعذر)، والتفكر في أمور الدنيا، والدعاء في غير المواضع التي شُرع فيها الدعاء.",ruling:"makruh",adilla:[]},
+        {id:"m244",text:"مبطلات الصلاة: تعمد ترك شرط أو ركن، والكلام عمداً لغير إصلاح الصلاة، والنفخ بالفم عمداً (إن صدر منه حروف)، وتعمد الأكل أو الشرب أو القيء، وتعمد السلام، والحدث، والضحك عمداً أو سهواً، والفعل الكثير، وزيادة أربع ركعات سهواً في الرباعية والثلاثية وركعتين في الثنائية.",ruling:"haram",adilla:[]}
+      ]
+    },
+    {
+      id:"c25", title:"باب سجود السهو",
+      masail:[
+        {id:"m251",text:"سجود السهو: سنة مؤكدة. صفته: سجدتان بتشهد وسلام بلا دعاء.",ruling:"mandub",adilla:[]},
+        {id:"m252",text:"سجود السهو نوعان: قبلي (سببه النقص من سنة مؤكدة كالجهر بالفاتحة في الفريضة، وسنتان خفيفتان كتكبيرتين، أو اجتماع النقص والزيادة مع غلبة النقص)، وبعدي (سببه الزيادة من جنس أفعال الصلاة كزيادة ركن أو ركعة، والشك إذا لم يبنِ على اليقين).",ruling:"",adilla:[]},
+        {id:"m253",text:"لا تبطل الصلاة بترك سجود السهو البعدي. وإذا اجتمعت زيادة مع نقص غلب جانب النقص ويسجد قبل السلام.",ruling:"mubah",adilla:[]}
+      ]
+    },
+    {
+      id:"c26", title:"باب قضاء الفوائت",
+      masail:[
+        {id:"m261",text:"قضاء الفوائت واجب على الفور. وصفته: تُقضى على الصفة التي فاتت عليها (قصراً أو إتماماً).",ruling:"wajib",adilla:[]},
+        {id:"m262",text:"ترتيب الصلوات في القضاء: واجب شرط (الإخلال به يؤدي للإثم والبطلان) بين الفوائت فيما بينها وبين الحاضرة والفوائت إذا كانت يسيراً. وواجب غير شرط (الإخلال به إثم لا بطلان) بين الحاضرة ويسير الفوائت إذا كانت دون خمس صلوات.",ruling:"wajib",adilla:[]}
+      ]
+    },
+    {
+      id:"c27", title:"باب صلاة الجمعة",
+      masail:[
+        {id:"m271",text:"تجب صلاة الجمعة على كل رجل حر مقيم بالقرب من الجامع (3 أميال = 4.5 كم تقريباً) ليس له عذر. والإقامة: العيش في المكان لمدة 4 أيام غير يوم الدخول ويوم الخروج.",ruling:"wajib",adilla:[]},
+        {id:"m272",text:"شروط صحة الجمعة: أن تكون في الجامع، وأن يكون الخطيب هو الإمام (إلا لعذر)، وأن يكون في الجماعة 12 رجلاً مستوطناً تجب عليهم الجمعة غير الإمام، وأن تكون الجماعة موجودة من بداية الخطبة إلى نهاية الصلاة، وأن يكون الإمام مقيماً، وأن تكون الخطبة بالعربية.",ruling:"wajib",adilla:[]},
+        {id:"m273",text:"الأعذار المبيحة للتخلف عن الجمعة: المطر الشديد، والجذام، والمرض الشاق، والتمريض، والقيام بشؤون المحتضر والميت، والخوف من ظالم.",ruling:"mubah",adilla:[]},
+        {id:"m274",text:"ما يحرم في الجمعة: السفر بعد الزوال كما مر قبل قليل، والكلام من المأموم أثناء الخطبة، وإلقاء السلام أو رده أثناءها، ونهي اللاغي، والأكل والشرب، وابتداء صلاة النافلة بعد خروج الخطيب.",ruling:"haram",adilla:[]},
+        {id:"m275",text:"تُدرك الجمعة بإدراك ركعة واحدة من الصلاة مع الإمام. ومن دخل مع الإمام في الركعة الثانية قضى ما فاته بركعة فقط.",ruling:"",adilla:[]}
+      ]
+    },
+    {
+      id:"c28", title:"باب صلاة الجماعة",
+      masail:[
+        {id:"m281",text:"حكم صلاة الجماعة: سنة مؤكدة في الفريضة وفي السنن المؤكدة غير الوتر، ومندوبة في التراويح. وهي فرض كفاية في عموم البلد، وشرط صحة في الجمعة.",ruling:"mandub",adilla:[]},
+        {id:"m282",text:"شروط اقتداء المأموم بالإمام: نية الاقتداء به قبل تكبيرة الإحرام، ومتابعته في الإحرام والسلام، ومساواته في ذات الصلاة وصفتها وزمنها.",ruling:"wajib",adilla:[]},
+        {id:"m283",text:"شروط الإمام: الذكورة المتحققة، والبلوغ، والإسلام، والعقل، والقدرة على أداء الأركان، والعلم بما تصح به الصلاة، وألا يكون مأموماً، وألا يكون متعمداً الحدث.",ruling:"wajib",adilla:[]},
+        {id:"m284",text:"كيف يقضي المسبوق: يبني في الأفعال ويقضي في الأقوال. وتُدرك الجماعة بإدراك ركعة كاملة مع الإمام.",ruling:"",adilla:[]}
+      ]
+    }
+  ]
+}
+
+]};
+
+// ════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════
+let isAdmin=false, searchQ="", editTarget=null, mIdx=0;
+const RL={wajib:"واجب",mandub:"مستحب",mubah:"مباح",makruh:"مكروه",haram:"حرام",sahih:"صحيح",fasid:"فاسد",batil:"باطل"};
+const DL={quran:"القرآن الكريم",hadith:"الحديث الشريف",ijmaa:"الإجماع",qiyas:"القياس",amal:"عمل أهل المدينة"};
+
+function hl(t){
+  if(!searchQ)return t;
+  const re=new RegExp(`(${searchQ.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return t.replace(re,'<mark>$1</mark>');
+}
+
+// ════════════════════════════════════════
+// RENDER
+// ════════════════════════════════════════
+function renderAll(){mIdx=0;renderTOC();renderBooks();}
+
+function renderTOC(){
+  const root=document.getElementById('tocBody');root.innerHTML='';
+  db.books.forEach(book=>{
+    const d=document.createElement('div');
+    d.innerHTML=`
+      <button class="toc-book-btn" onclick="tbk('tcb-${book.id}',this)">
+        <span>📖 ${book.title}</span><span class="arrow">◀</span>
+      </button>
+      <div class="toc-chap-list" id="tcb-${book.id}">
+        ${book.chapters.map(ch=>`
+          <div>
+            <button class="toc-chap-btn" onclick="tch('tcc-${ch.id}',this)">
+              <span>${ch.title}</span><span class="arrow">◀</span>
+            </button>
+            <div class="toc-masail-list" id="tcc-${ch.id}">
+              ${ch.masail.map(m=>`<button class="toc-masala-btn" onclick="jumpTo('${m.id}')">${m.text.slice(0,36)}…</button>`).join('')}
+            </div>
+          </div>`).join('')}
+      </div>`;
+    root.appendChild(d);
+  });
+}
+
+function tbk(id,btn){const e=document.getElementById(id);e.classList.toggle('open');btn.classList.toggle('open');}
+function tch(id,btn){const e=document.getElementById(id);e.classList.toggle('open');btn.classList.toggle('open');}
+function jumpTo(id){const e=document.getElementById('masala-'+id);if(e){e.scrollIntoView({behavior:'smooth',block:'center'});}closeTOC();}
+
+function renderBooks(){
+  mIdx=0;const root=document.getElementById('booksRoot');root.innerHTML='';
+  const q=searchQ.trim().toLowerCase();
+  db.books.forEach(book=>{
+    let match=false;
+    const chapHTML=book.chapters.map(ch=>{
+      const ms=ch.masail.filter(m=>!q||m.text.toLowerCase().includes(q));
+      if(!ms.length&&q)return'';match=true;
+      const prose=ms.map(m=>{
+        mIdx++;const i=mIdx;
+        const hd=m.adilla&&m.adilla.length>0;
+        const rb=m.ruling?`<span class="ruling-badge r-${m.ruling}">${RL[m.ruling]}</span>`:'';
+        const fn=hd?`<sup class="fn-ref" onclick="openDrawer('${m.id}','${book.id}','${ch.id}')" title="عرض الأدلة">${i}</sup>`:'';
+        const eb=`<button class="edit-masala-btn" onclick="openEdit('${book.id}','${ch.id}','${m.id}')" title="تعديل">✏</button>`;
+        return `<span class="masala ${hd?'has-dalil':'no-dalil'}" id="masala-${m.id}">${rb}${eb}<span class="masala-text"${hd?` onclick="openDrawer('${m.id}','${book.id}','${ch.id}')"`:''}>${hl(m.text)}</span>${fn}. </span>`;
+      }).join(' ');
+      return `<div class="chapter-section" id="chap-${ch.id}">
+        <div class="chapter-title">${ch.title}</div>
+        <div class="masail-prose">${prose}</div>
+        <div class="add-masala-zone"><button class="add-masala-btn" onclick="openAdd('${book.id}','${ch.id}')">+ إضافة مسألة</button></div>
+      </div>`;
+    }).join('');
+    if(q&&!match)return;
+    const s=document.createElement('div');s.className='book-section';s.id=`book-${book.id}`;
+    s.innerHTML=`<div class="book-title-block"><div class="book-ornament">❧ ✦ ❧</div><div class="book-title">${book.title}</div></div>${chapHTML}`;
+    root.appendChild(s);
+  });
+  if(q&&root.innerHTML.trim()==='')root.innerHTML=`<div class="empty"><p>🔍 لا نتائج عن: "${q}"</p></div>`;
+}
+
+// ════════════════════════════════════════
+// DRAWER
+// ════════════════════════════════════════
+function openDrawer(mid,bid,cid){
+  const m=db.books.find(b=>b.id===bid)?.chapters.find(c=>c.id===cid)?.masail.find(x=>x.id===mid);
+  if(!m)return;
+  document.querySelectorAll('.masala').forEach(e=>e.classList.remove('active'));
+  const el=document.getElementById('masala-'+mid);if(el)el.classList.add('active');
+  document.getElementById('dTitle').textContent='الأدلة الفقهية';
+  document.getElementById('dSub').textContent=m.text.slice(0,65)+(m.text.length>65?'…':'');
+  document.getElementById('dBody').innerHTML=m.adilla.map(d=>`
+    <div class="dalil-card">
+      <div class="dalil-type-bar dt-${d.type}">${DL[d.type]||d.type}</div>
+      <div class="dalil-body">
+        ${d.text?`<p class="dalil-intro">${d.text}:</p>`:''}
+        ${d.nass?`<span class="dalil-nass">${d.nass}</span>`:''}
+        ${d.source?`<span class="dalil-source">📚 ${d.source}</span>`:''}
+        ${d.wajh?`<div class="dalil-wajh">🔍 ${d.wajh}</div>`:''}
+      </div>
+    </div>`).join('');
+  document.getElementById('dOverlay').classList.add('open');
+  document.getElementById('drawer').classList.add('open');
+}
+function closeDrawer(){
+  document.getElementById('dOverlay').classList.remove('open');
+  document.getElementById('drawer').classList.remove('open');
+  document.querySelectorAll('.masala').forEach(e=>e.classList.remove('active'));
+}
+
+// ════════════════════════════════════════
+// EDIT MODAL
+// ════════════════════════════════════════
+function openEdit(bid,cid,mid){
+  const m=db.books.find(b=>b.id===bid)?.chapters.find(c=>c.id===cid)?.masail.find(x=>x.id===mid);
+  if(!m)return;editTarget={bid,cid,mid};
+  document.getElementById('editTitle').textContent='✏️ تعديل مسألة';
+  document.getElementById('eText').value=m.text;document.getElementById('eRuling').value=m.ruling||'';
+  document.getElementById('deList').innerHTML='';(m.adilla||[]).forEach(d=>addDE(d));
+  document.getElementById('editModal').classList.add('open');
+}
+function openAdd(bid,cid){
+  editTarget={bid,cid,mid:null};
+  document.getElementById('editTitle').textContent='➕ إضافة مسألة جديدة';
+  document.getElementById('eText').value='';document.getElementById('eRuling').value='';
+  document.getElementById('deList').innerHTML='';
+  document.getElementById('editModal').classList.add('open');
+}
+function closeEditModal(){document.getElementById('editModal').classList.remove('open');editTarget=null;}
+function addDE(d={}){
+  const l=document.getElementById('deList'),div=document.createElement('div');div.className='de-entry';
+  div.innerHTML=`
+    <div class="de-row">
+      <select>${Object.entries(DL).map(([k,v])=>`<option value="${k}"${d.type===k?' selected':''}>${v}</option>`).join('')}</select>
+      <button class="btn-rm-de" onclick="this.closest('.de-entry').remove()">×</button>
+    </div>
+    <input type="text" placeholder="المقدمة (اختياري)" value="${d.text||''}">
+    <textarea placeholder="نص الآية أو الحديث" style="width:100%;margin-top:5px;padding:7px;border:1px solid #ccc;border-radius:5px;font-family:inherit;direction:rtl" rows="2">${d.nass||''}</textarea>
+    <input type="text" placeholder="المصدر" value="${d.source||''}" style="margin-top:5px">
+    <textarea placeholder="وجه الدلالة" style="width:100%;margin-top:5px;padding:7px;border:1px solid #ccc;border-radius:5px;font-family:inherit;direction:rtl" rows="2">${d.wajh||''}</textarea>`;
+  l.appendChild(div);
+}
+function saveEdit(){
+  if(!editTarget)return;
+  const text=document.getElementById('eText').value.trim();
+  if(!text){alert('يرجى كتابة نص المسألة');return;}
+  const ruling=document.getElementById('eRuling').value,adilla=[];
+  document.querySelectorAll('#deList .de-entry').forEach(e=>{
+    const sel=e.querySelector('select').value,ins=e.querySelectorAll('input'),areas=e.querySelectorAll('textarea');
+    adilla.push({type:sel,text:ins[0].value.trim(),nass:areas[0].value.trim(),source:ins[1].value.trim(),wajh:areas[1].value.trim()});
+  });
+  const ch=db.books.find(b=>b.id===editTarget.bid)?.chapters.find(c=>c.id===editTarget.cid);
+  if(editTarget.mid){const m=ch.masail.find(x=>x.id===editTarget.mid);m.text=text;m.ruling=ruling;m.adilla=adilla;}
+  else ch.masail.push({id:'m'+Date.now(),text,ruling,adilla});
+  closeEditModal();renderAll();
+}
+
+// ════════════════════════════════════════
+// AUTH
+// ════════════════════════════════════════
+function openLogin(){document.getElementById('loginModal').classList.add('open');document.getElementById('pwInput').focus();document.getElementById('loginErr').style.display='none';}
+function closeLogin(){document.getElementById('loginModal').classList.remove('open');}
+function doLogin(){
+  if(document.getElementById('pwInput').value===PASS){
+    isAdmin=true;document.body.classList.add('is-admin');
+    document.getElementById('loginBtn').style.display='none';
+    document.getElementById('logoutBtn').style.display='';
+    document.getElementById('adminTag').style.display='';
+    closeLogin();document.getElementById('pwInput').value='';
+  }else document.getElementById('loginErr').style.display='block';
+}
+function doLogout(){
+  isAdmin=false;document.body.classList.remove('is-admin');
+  document.getElementById('loginBtn').style.display='';
+  document.getElementById('logoutBtn').style.display='none';
+  document.getElementById('adminTag').style.display='none';
+}
+
+// ════════════════════════════════════════
+// SEARCH + MOBILE
+// ════════════════════════════════════════
+document.getElementById('searchInput').addEventListener('input',function(){searchQ=this.value.trim();renderBooks();});
+document.getElementById('menuToggle').addEventListener('click',()=>{
+  document.getElementById('tocSidebar').classList.toggle('open');
+  document.getElementById('tocOverlay').style.display=document.getElementById('tocSidebar').classList.contains('open')?'block':'none';
+});
+function closeTOC(){document.getElementById('tocSidebar').classList.remove('open');document.getElementById('tocOverlay').style.display='none';}
+
+renderAll();
+document.querySelector('.toc-book-btn')?.click();
+</script>
+</body>
+</html>
